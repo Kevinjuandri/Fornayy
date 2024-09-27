@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Girlfriend Day for Naysca</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            overflow-y: scroll; /* Masih memungkinkan scroll vertikal */
+            scroll-behavior: smooth;
+            scrollbar-width: none; /* Untuk Firefox */
+        }
+
+        body::-webkit-scrollbar {
+            display: none; /* Untuk Chrome, Safari, dan Edge */
+        }
+
+        section {
+            height: 100vh; /* Setiap section memiliki tinggi 100vh */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            position: relative;
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease; /* Animasi transisi */
+            opacity: 0; /* Awal tidak terlihat */
+            transform: translateY(20px); /* Geser sedikit ke bawah */
+        }
+
+        section.show {
+            opacity: 1; /* Menjadi terlihat */
+            transform: translateY(0); /* Kembali ke posisi normal */
+        }
+
+        .about {
+            background-color: #ff99cc; /* Soft pink */
+        }
+
+        .favorites {
+            background-color: #ffb3d9; /* Light peach */
+        }
+
+        .photos {
+            background-color: #ffccf2; /* Light lavender */
+        }
+
+        .new-page {
+            background-color: #ffd1e6; /* Light pink for new page */
+        }
+
+        .circle-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .circle-photo img {
+            width: 100%;
+            height: auto;
+        }
+
+        .favorites-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 80%;
+            margin: 20px 0;
+        }
+
+        .box {
+            background: #ffb3d9; /* Light pink box */
+            padding: 20px;
+            border-radius: 10px;
+            width: 100%;
+            margin: 10px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            position: relative;
+            transition: background-color 0.3s; /* Animasi perubahan warna */
+        }
+
+        .box:hover {
+            background-color: #e0e0e0; /* Warna saat hover */
+        }
+
+        .hidden-list {
+            display: none;
+            margin-top: 10px;
+            max-height: 0; /* Awal tidak terlihat */
+            overflow: hidden; /* Menyembunyikan overflow */
+            transition: max-height 0.5s ease-in-out; /* Animasi gulung */
+        }
+
+        .hidden-list.show {
+            display: block; /* Menampilkan daftar */
+            max-height: 100px; /* Sesuaikan tinggi maksimum saat terlihat */
+            animation: unfold 0.5s forwards; /* Animasi unfold */
+        }
+
+        @keyframes unfold {
+            from { max-height: 0; }
+            to { max-height: 100px; } /* Tinggi maksimum */
+        }
+
+        .photos-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            width: 80%;
+        }
+
+        .photo-group {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            opacity: 0; /* Awal di posisi transparan */
+            transform: translateY(20px); /* Awal di posisi lebih bawah */
+            transition: opacity 0.5s ease, transform 0.5s ease; /* Menambahkan transisi untuk efek muncul */
+        }
+
+        .photo-group.show {
+            opacity: 1;
+            transform: translateY(0); /* Kembali ke posisi semula */
+        }
+
+        .photo {
+            width: 45%; /* Adjust for 2 on each side */
+            border-radius: 10px;
+            margin: 0 5px; /* Space between images */
+        }
+
+        .message-box {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: transparent;
+            margin-top: 20px;
+        }
+
+        .message-box p {
+            margin: 0;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <audio autoplay loop></audio>
+        <source src="Ed Sheeran - Photograph (Official Music Video).mp3" type="audio/mpeg">
+    </audio>
+
+    <section class="about" id="about">
+        <div class="circle-photo">
+            <img src="profill (1).jpeg" alt="Naysca's Photo">
+        </div>
+        <h1>Halo Naysca Sekar Tantrielle</h1>
+        <p>Semoga suka ya cinta manis</p>
+    </section>
+
+    <section class="favorites" id="favorites">
+        <h1>Kesukaan Naysca</h1>
+        <div class="favorites-box">
+            <div class="box" onclick="toggleList(this)">
+                <h2>Food favorites</h2>
+                <ul class="hidden-list">
+                    <li>1. PIZZA🍕</li>
+                    <li>2. BAKSO PEDAS BUATAN MAMA🍲</li>
+                    <li>3. PECEL LELE🐟</li>
+                </ul>
+            </div>
+            <div class="box" onclick="toggleList(this)">
+                <h2>Music favorites</h2>
+                <ul class="hidden-list">
+                    <li>1. baby came home 2 valentines</li>
+                    <li>2. About you</li>    
+                    <li>3. If Ain't got you</li>
+                    <li>4. aku milikmu - dewa 19</li>
+                    <li>5. A year ago - james arthur</li>
+                </ul>
+            </div>
+            <div class="box" onclick="toggleList(this)">
+                <h2>Hobi</h2>
+                <ul class="hidden-list">
+                    <li>1. Suka han so hee</li>
+                    <li>2. Suka kucing 🐈</li> 
+                    <li>3. Suka soto gak pakai sayur 🍲</li>
+                    <li>4. Suka danau, tapi gak suka danau duta 🌊</li> 
+                    <li>5. Suka alam 🏞️</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="photos" id="photos">
+        <h1>Beautiful Naysca</h1>
+        <div class="photos-container">
+            <div class="photo-group">
+                <img src="nay cantik1.jpeg" alt="Naysca Beautiful 1" class="photo">
+                <img src="nay cantik2.jpeg" alt="Naysca Beautiful 2" class="photo">
+            </div>
+            <div class="photo-group">
+                <img src="nay cantik3.jpeg" alt="Naysca Beautiful 3" class="photo">
+                <img src="nay cantik4.jpeg" alt="Naysca Beautiful 4" class="photo">
+            </div>
+        </div>
+    </section>
+
+    <section class="photos" id="photos-funny">
+        <h1>Funny Naysca</h1>
+        <div class="photos-container">
+            <div class="photo-group">
+                <img src="naysca lucu1.jpeg" alt="Naysca Funny 1" class="photo">
+                <img src="naysca lucu2.jpeg" alt="Naysca Funny 2" class="photo">
+            </div>
+            <div class="photo-group">
+                <img src="naysca lucu3.jpeg" alt="Naysca Funny 3" class="photo">
+                <img src="naysca lucu4.jpeg" alt="Naysca Funny 4" class="photo">
+            </div>
+        </div>
+    </section>
+
+    <section class="photos" id="photos-great">
+        <h1>Great Naysca</h1>
+        <div class="photos-container">
+            <div class="photo-group">
+                <img src="nay bagus1.jpeg" alt="Naysca Great 1" class="photo">
+                <img src="nay bagus2.jpeg" alt="Naysca Great 2" class="photo">
+            </div>
+            <div class="photo-group">
+                <img src="nay bagus3.jpeg" alt="Naysca Great 3" class="photo">
+                <img src="nay bagus4.jpeg" alt="Naysca Great 4" class="photo">
+            </div>
+        </div>
+    </section>
+
+    <section class="new-page" id="new-page">
+        <h1>Pesan untuk Naysca</h1>
+        <div class="message-box">
+            <p>Makasih ya Naysca, aku seneng banget bisa kenal ennay, terus sama aku yaa cinta manis, semoga kamu gak kecewa in aku, dan aku gak kecewain kamu, aku sangat amat sayang ennay, dan semoga ennay sayang aku sangat amat juga, makasih ya, kamu emang bukan FIRST love, tapi kamu first LOVE bagi aku, makasih banyak yaa, segitu aja, baibaii -K.</p>
+        </div>
+    </section>
+
+    <script>
+        const photoGroups = document.querySelectorAll('.photo-group');
+        const sections = document.querySelectorAll('section');
+
+        const options = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1,
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                } else {
+                    entry.target.classList.remove('show');
+                }
+            });
+        }, options);
+
+        photoGroups.forEach(group => {
+            observer.observe(group);
+        });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        function toggleList(box) {
+            const list = box.querySelector('.hidden-list');
+            list.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>
