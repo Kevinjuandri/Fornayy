@@ -94,7 +94,7 @@ const heartsAnimation = () => {
     // Menghapus hati setelah 10 detik
     setTimeout(() => {
         heartsContainer.innerHTML = ''; // Bersihkan setelah 10 detik
-    }, 100000);
+    }, 10000000);
 };
 
 // Memanggil fungsi saat halaman dimuat
